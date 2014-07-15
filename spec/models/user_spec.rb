@@ -5,6 +5,8 @@ describe User do
 
   subject { @user }
 
+  it { should have_many :assignments }
+  it { should have_many :projects }
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }

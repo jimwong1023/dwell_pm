@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   before_save { email.downcase! }
   before_save :create_remember_token
 
+  has_many :assignments
+  has_many :projects, :through => :assignemnts
+
   has_secure_password
 
   validates :first_name, :last_name, presence: true, length: { maximum: 50 }

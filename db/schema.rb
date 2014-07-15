@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709205242) do
+ActiveRecord::Schema.define(version: 20140714223338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: true do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "client_name"
+    t.string   "email"
+    t.integer  "initial_payment"
+    t.integer  "final_payment"
+    t.integer  "winning_designer"
+    t.text     "scope"
+    t.integer  "moodboard_payment"
+    t.string   "dropbox"
+    t.boolean  "completed",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "projects", ["client_name"], name: "index_projects_on_client_name", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"
