@@ -3,8 +3,20 @@ class ProjectsController < ApplicationController
   
   def create
     @project = Project.new(project_params)
-    binding.pry
-    current_user.projects << @project
+
+    if @project.save
+      flash[:success] = "Project Created!"
+      params[:project][:assignments_attributes].each do |key, value|
+        next if value["user_id"] == ""
+        assignment = @project.assignments.new(user_id: value["user_id"], project_id: @project.id)
+        if assignment.save == false
+          flash[:error] = "Assignment Error"
+        end
+      end
+      redirect_to root_path
+    else
+      render 'static_pages/home'
+    end
   end
   
   private
