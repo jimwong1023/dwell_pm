@@ -1,5 +1,18 @@
 <% if signed_in? %>
   <h1>Hello <%= current_user.first_name %></h1>
+  <div class="row">
+  	<aside class="span4">
+  		<section>
+  			<%= render 'shared/project_form' %>
+  		</section>
+  		<section>
+  		</section>
+  		<section>
+  		</section>
+  		<section>
+  		</section>
+  	</aside>
+  </div>
 <% else %>
   <h1>Dwell Candy Project Management</h1>
 

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   has_many :assignments
-  has_many :projects, :through => :assignemnts
+  has_many :projects, :through => :assignments
 
   has_secure_password
 

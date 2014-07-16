@@ -17,8 +17,10 @@ ActiveRecord::Schema.define(version: 20140714223338) do
   enable_extension "plpgsql"
 
   create_table "assignments", force: true do |t|
-    t.integer "user_id"
-    t.integer "project_id"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "projects", force: true do |t|
@@ -29,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140714223338) do
     t.integer  "winning_designer"
     t.text     "scope"
     t.integer  "moodboard_payment"
+    t.integer  "full_payment"
     t.string   "dropbox"
     t.boolean  "completed",         default: false
     t.datetime "created_at"

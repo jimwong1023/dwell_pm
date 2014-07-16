@@ -8,7 +8,7 @@ class CreateProjects < ActiveRecord::Migration
       t.integer :winning_designer
       t.text :scope
       t.integer :moodboard_payment
-      t.integer :final_payment
+      t.integer :full_payment
       t.string :dropbox
       t.boolean :completed, default: false
 

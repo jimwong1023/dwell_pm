@@ -1,0 +1,16 @@
+<%= form_for(@project) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+  	<%= f.text_field :client_name, placeholder: "Client Name" %>
+  	<%= f.email_field :email, placeholder: "Email" %>
+  	<%= f.number_field :initial_payment, placeholder: "Initial Payment" %>
+  	<%= f.number_field :final_payment, placeholder: "Final Payment" %>
+  	<%= f.number_field :moodboard_payment, placeholder: "Moodboard Participation Payment" %>
+  	<%= f.number_field :full_payment, placeholder: "Full Design Payment" %>
+  	<%= f.text_area :scope, placeholder: "Scope of Project..." %>
+  	<%= f.fields_for :assignments do |builder| %>
+  		<%= builder.collection_select(:user_id, User.all, :id, :email, include_blank: 'None') %>
+  	<% end %>
+  </div>
+  <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+<% end %>
